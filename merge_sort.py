@@ -1,7 +1,7 @@
 # Алгоритм сортировки списка по возрастанию методом слияния
 
-# Фукция, объединяющая два списка
-def merge_two_list(a, b):
+# Функция, объединяющая два списка
+def merge_two_lists(a, b):
     c = []
     i = j = 0
 
@@ -12,6 +12,7 @@ def merge_two_list(a, b):
         else:
             c.append(b[j])
             j += 1
+
     if i < len(a):
         c += a[i:]
     if j < len(b):
@@ -20,7 +21,7 @@ def merge_two_list(a, b):
     return c
 
 
-# Функция, выполняющаяя сортировку
+# Функция, выполняющая сортировку
 def merge_sort(arr):
     if len(arr) < 2:
         return arr
@@ -28,9 +29,11 @@ def merge_sort(arr):
         middle = len(arr) // 2
         left = merge_sort(arr[:middle])
         right = merge_sort(arr[middle:])
-        return merge_two_list(left, right)
+
+        return merge_two_lists(left, right)
 
 
-len_arr1 = int(input("Введите длину массива: "))
-arr1 = list(map(int, input("Введите элементы массива: ").split()))
-print("Отсортированный по возрастанию массив: ", *merge_sort(arr1))
+if __name__ == '__main__':
+    my_list = [23, 0, 12, -3, 2, 3, 10, 1, -1, 0, 4]
+    print("Исходный массив:", my_list)
+    print("Отсортированный по возрастанию массив: ", merge_sort(my_list))
